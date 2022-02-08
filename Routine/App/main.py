@@ -56,13 +56,55 @@ class Player:
         pass
 
 class Routine:
+    """Class used to everything related to single routines"""
     pass
 
 class TrainingPlan:
-    pass
+    """Class used to everything related to training plans which consist
+    of single routines selected for a specific player 
+    """
+    def __str__(self):
+        return f'Training plan {self.name} - details: {self.description}'
+
+    def __repr__(self):
+        return 'Training plan {self.name} - details: {self.description}'
+
+    def __init__(self, name, description='', lvl=''):
+        self.id = uuid4()
+        self.name = name
+        self.description = description
+        self.lvl = lvl
+        self.routines = []
+
+    def add_routine_to_plan(self, *args):
+        for i in args:
+            self.routines.append(i)
+
 
 class Skill:
-    pass
+    """Class used to manage detailed skills of players and areas to improve"""
+    def __str__(self):
+        return f'Skill {self.skill} - details: {self.details}'
+
+    def __repr__(self):
+        return 'Skill {self.skill} - details: {self.details}'
+
+    def __init__(self, skill, comment=''):
+        self.id = uuid4()
+        self.skill = skill
+        self.details = comment
+
 
 class Admin:
-    pass
+    """Class related to role of admin"""
+
+    def __str__(self):
+        return f'Admin {self.first_name} {self.last_name}'
+
+    def __repr__(self):
+        return 'Admin {self.first_name} {self.last_name}'
+    
+    def __init__(self, firstname, lastname):
+        self.id = uuid4()
+        self.first_name = firstname
+        self.last_name = lastname
